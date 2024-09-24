@@ -24,17 +24,16 @@ app.post("/generate-pdf", async (req, res) => {
     // Launch Puppeteer
     console.log(3)
     const browser = await puppeteer.launch({
-      headless: false,
       args: [
         "--disable-setuid-sandbox",
         "--no-sandbox",
         // "--single-process",
-        "--no-zygote",
+        // "--no-zygote",
       ],
-      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH
-        // process.env.NODE_ENV === "production"
-        //   ? process.env.PUPPETEER_EXECUTABLE_PATH
-        //   : puppeteer.executablePath(),
+      executablePath: 
+        process.env.NODE_ENV === "production"
+          ? process.env.PUPPETEER_EXECUTABLE_PATH
+          : puppeteer.executablePath(),
     });
     console.log(4)
     const page = await browser.newPage();
