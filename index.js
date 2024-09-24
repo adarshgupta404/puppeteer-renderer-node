@@ -24,6 +24,7 @@ app.post("/generate-pdf", async (req, res) => {
     // Launch Puppeteer
     console.log(3)
     const browser = await puppeteer.launch({
+      headless: false,
       args: [
         "--disable-setuid-sandbox",
         "--no-sandbox",
